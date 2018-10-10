@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript_ Démo Data-</title>
+</head>
+<body>
+    <h1>Les attributs universels</h1>
+<!--    On ajoute un attribut universel qui stocke la photo au survol-->
+    <img src="./chats/cat04.jpg" data-ro="./chats/cat01.jpg" alt="démo JS">
+    <img src="./chats/cat03.jpg" data-ro="./chats/cat04.jpg" alt="démo JS">
+    <img src="./chats/cat01.jpg" data-ro="./chats/cat04.jpg" alt="démo JS">
+    
+    <script>
+        //Rollover via data-ro
+        //comme on utilise querySelectorAll(),on reçoit un ARRAY!!
+        var mesImg=document.querySelectorAll('img');
+        
+        function hoverImg(e){
+            //On récupère ce qui est stocké dans l'attribut data-ro
+            var nouvelleImage=e.currentTarget.dataset.ro;
+            //...on met à jour sa valeur et...
+            e.currentTarget.dataset.ro=e.currentTarget.getAttribute('src');
+            //on l'utilise pour mettre la photo à jour
+            e.currentTarget.setAttribute('src',nouvelleImage);
+            
+        }
+        
+      //On boucle au travers du tableau  
+    for(var i =0;i<mesImg.length;i++){  
+        //L'event lorrsqu'on entre sur une balise HTML
+       mesImg[i].addEventListener('mouseenter',hoverImg);
+        //L'event lorsqu'on quitte une balise HTML
+       mesImg[i].addEventListener('mouseleave',hoverImg);
+            
+    }
+    
+    
+    </script>
+</body>
+</html>
